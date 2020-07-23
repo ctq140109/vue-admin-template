@@ -8,7 +8,7 @@ export function login(data) {
   })
 }
 
-export function getInfo(uid) {
+export function getInfo(token) {
   return request({
     url: '/user/info',
     method: 'get',
