@@ -20,13 +20,15 @@ export default {
   data() {
     return {
       // 3、v-model绑定数据
-      msg: '<h2><img src="http://img.baidu.com/hi/jx2/j_0003.gif"/>Vue + UEditor + v-model双向绑定</h2>',
+      msg: `
+      <table><tbody><tr class="firstRow"><td width="148" valign="top"><br/></td><td width="148" valign="top"><br/></td><td width="148" valign="top"><br/></td><td width="148" valign="top"><br/></td><td width="148" valign="top"><br/></td><td width="148" valign="top"><br/></td></tr><tr><td width="148" valign="top"><br/></td><td width="148" valign="top"><br/></td><td width="148" valign="top"><br/></td><td width="148" valign="top"><br/></td><td width="148" valign="top"><br/></td><td width="148" valign="top"><br/></td></tr><tr><td width="148" valign="top"><br/></td><td width="148" valign="top"><br/></td><td width="148" valign="top"><br/></td><td width="148" valign="top"><br/></td><td width="148" valign="top"><br/></td><td width="148" valign="top"><br/></td></tr><tr><td width="148" valign="top"><br/></td><td width="148" valign="top"><br/></td><td width="148" valign="top"><br/></td><td width="148" valign="top"><br/></td><td width="148" valign="top"><br/></td><td width="148" valign="top"><br/></td></tr></tbody></table><p><br/></p>
+      `,
       // 4、根据项目需求自行配置,具体配置参见ueditor.config.js源码或 http://fex.baidu.com/ueditor/#start-start
       config: {
         // 编辑器不自动被内容撑高
         autoHeightEnabled: false,
         // 初始容器高度
-        initialFrameHeight: 240,
+        initialFrameHeight: 400,
         // 初始容器宽度
         initialFrameWidth: '100%',
         // 上传文件接口（这个地址是我为了方便各位体验文件上传功能搭建的临时接口，请勿在生产环境使用！！！）
@@ -46,11 +48,11 @@ export default {
   methods: {
     // 5、 你可以在ready方法中拿到editorInstance实例,所有API和官方的实例是一样了。http://fex.baidu.com/ueditor/#api-common
     ready(editorInstance) {
-      console.log(`实例${editorInstance.key}已经初始化:`, editorInstance)
+      // console.log(`实例${editorInstance.key}已经初始化:`, editorInstance)
     },
     // 6. 查看绑定的数据
     showData() {
-      alert(this.msg)
+      // alert(this.msg)
       console.log(this.msg)
     },
     // 7. 借助 beforeInit 钩子，你可以实现对 UEditor 的二次开发，会在 scripts 加载完毕之后、编辑器初始化之前触发，以 编辑器 id 和 配置参数 作为入参
