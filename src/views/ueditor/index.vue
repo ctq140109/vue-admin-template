@@ -44,6 +44,7 @@ export default {
   },
   mounted() {
     // console.log('%c注意：本Demo提供的serverUrl是为了方便小伙伴们体验图片文件等上传功能。\n请勿在生产环境使用此serverUrl！！！', 'background:#f33;color:#fff')
+    console.log('数据已挂载')
   },
   methods: {
     // 5、 你可以在ready方法中拿到editorInstance实例,所有API和官方的实例是一样了。http://fex.baidu.com/ueditor/#api-common
@@ -57,7 +58,7 @@ export default {
     },
     // 7. 借助 beforeInit 钩子，你可以实现对 UEditor 的二次开发，会在 scripts 加载完毕之后、编辑器初始化之前触发，以 编辑器 id 和 配置参数 作为入参
     addCustomUI(editorId, editorConfig) {
-      console.log(editorId + '的配置参数是:', JSON.stringify(editorConfig, null, 2))
+      // console.log(editorId + '的配置参数是:', JSON.stringify(editorConfig, null, 2))
 
       // 1. 自定义按钮
       window.UE.registerUI('test-button' + editorId, function(editor, uiName) {

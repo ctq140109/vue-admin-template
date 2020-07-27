@@ -49,6 +49,7 @@
 
 <script>
 export default {
+  name: 'Form',
   data() {
     return {
       form: {
@@ -62,6 +63,9 @@ export default {
         desc: ''
       }
     }
+  },
+  mounted() {
+    console.log('数据已挂载')
   },
   methods: {
     onSubmit() {

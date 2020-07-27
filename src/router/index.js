@@ -85,7 +85,7 @@ export const constantRoutes = [
         path: 'index',
         name: 'Form',
         component: () => import('@/views/form/index'),
-        meta: { title: '表单', icon: 'form' }
+        meta: { title: '表单', icon: 'form', noCache: true, roles: [] }
       }
     ]
   },
@@ -98,7 +98,7 @@ export const constantRoutes = [
         path: 'ueditor',
         name: 'Ueditor',
         component: () => import('@/views/ueditor/index'),
-        meta: { title: '富文本编辑器', icon: 'form' }
+        meta: { title: '富文本编辑器', icon: 'form', noCache: true, roles: [] }
       }
     ]
   },
@@ -176,6 +176,8 @@ export const constantRoutes = [
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]
+
+export const asyncRoutes = []
 
 const createRouter = () => new Router({
   // mode: 'history', // require service support
