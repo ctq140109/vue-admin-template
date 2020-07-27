@@ -1,12 +1,23 @@
-import { login, logout, getInfo } from '@/api/user'
-import { getToken, setToken, removeToken } from '@/utils/auth'
-import { resetRouter } from '@/router'
+import {
+  login,
+  logout,
+  getInfo
+} from '@/api/user'
+import {
+  getToken,
+  setToken,
+  removeToken
+} from '@/utils/auth'
+import {
+  resetRouter
+} from '@/router'
 
 const getDefaultState = () => {
   return {
     token: getToken(),
     name: '',
-    avatar: ''
+    avatar: '',
+    roles: []
   }
 }
 
@@ -24,16 +35,29 @@ const mutations = {
   },
   SET_AVATAR: (state, avatar) => {
     state.avatar = avatar
+  },
+  SET_ROLES: (state, roles) => {
+    state.roles = roles
   }
 }
 
 const actions = {
   // user login
-  login({ commit }, userInfo) {
-    const { username, password } = userInfo
+  login({
+    commit
+  }, userInfo) {
+    const {
+      username,
+      password
+    } = userInfo
     return new Promise((resolve, reject) => {
-      login({ username: username.trim(), password: password }).then(response => {
-        const { data } = response
+      login({
+        username: username.trim(),
+        password: password
+      }).then(response => {
+        const {
+          data
+        } = response
         commit('SET_TOKEN', data.token)
         setToken(data.token)
         resolve()
@@ -44,19 +68,32 @@ const actions = {
   },
 
   // get user info
-  getInfo({ commit, state }) {
+  getInfo({
+    commit,
+    state
+  }) {
     return new Promise((resolve, reject) => {
       getInfo(state.token).then(response => {
-        const { data } = response
+        const {
+          data
+        } = response
 
         if (!data) {
           return reject('Verification failed, please Login again.')
         }
 
-        const { name, avatar } = data
-
+        const {
+          name,
+          avatar,
+          roles
+        } = data
+        // 角色不能为空
+        if (!roles || roles.length <= 0) {
+          reject('角色不能为空')
+        }
         commit('SET_NAME', name)
         commit('SET_AVATAR', avatar)
+        commit('SET_ROLES', roles)
         resolve(data)
       }).catch(error => {
         reject(error)
@@ -65,12 +102,21 @@ const actions = {
   },
 
   // user logout
-  logout({ commit, state }) {
+  logout({
+    commit,
+    state,
+    dispatch
+  }) {
     return new Promise((resolve, reject) => {
       logout(state.token).then(() => {
         removeToken() // must remove  token  first
         resetRouter()
         commit('RESET_STATE')
+        // reset visited views and cached views
+        // to fixed https://github.com/PanJiaChen/vue-element-admin/issues/2485
+        dispatch('tagsView/delAllViews', null, {
+          root: true
+        })
         resolve()
       }).catch(error => {
         reject(error)
@@ -79,7 +125,9 @@ const actions = {
   },
 
   // remove token
-  resetToken({ commit }) {
+  resetToken({
+    commit
+  }) {
     return new Promise(resolve => {
       removeToken() // must remove  token  first
       commit('RESET_STATE')
@@ -94,4 +142,3 @@ export default {
   mutations,
   actions
 }
-

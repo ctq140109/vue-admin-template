@@ -1,5 +1,8 @@
 <template>
   <div class="app-container">
+    <div>
+      <el-button v-permission="['admin']" type="primary" icon="refresh" size="small">搜索</el-button>
+    </div>
     <el-table
       v-loading="listLoading"
       :data="list"

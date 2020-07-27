@@ -33,6 +33,9 @@ if (process.env.NODE_ENV === 'production') {
 // 如果想要中文版 element-ui，按如下方式声明
 Vue.use(ElementUI)
 
+import permission from '@/directive/permission/index.js' // 权限判断指令
+Vue.use(permission)
+
 Vue.config.productionTip = false
 
 new Vue({

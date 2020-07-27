@@ -51,7 +51,7 @@ export const constantRoutes = [
       path: 'dashboard',
       name: 'Dashboard',
       component: () => import('@/views/dashboard/index'),
-      meta: { title: '导航', icon: 'dashboard' }
+      meta: { title: '导航', icon: 'dashboard', affix: true }
     }]
   },
 
@@ -85,7 +85,7 @@ export const constantRoutes = [
         path: 'index',
         name: 'Form',
         component: () => import('@/views/form/index'),
-        meta: { title: '表单', icon: 'form', noCache: true, roles: [] }
+        meta: { title: '表单', icon: 'form', noCache: true, roles: ['admin'] }
       }
     ]
   },
@@ -98,7 +98,7 @@ export const constantRoutes = [
         path: 'ueditor',
         name: 'Ueditor',
         component: () => import('@/views/ueditor/index'),
-        meta: { title: '富文本编辑器', icon: 'form', noCache: true, roles: [] }
+        meta: { title: '富文本编辑器', icon: 'form', noCache: true, roles: ['editor'] }
       }
     ]
   },

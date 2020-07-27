@@ -12,7 +12,7 @@ import VueUeditorWrap from 'vue-ueditor-wrap' // ES6 Module
 // const VueUeditorWrap = require('vue-ueditor-wrap') // CommonJS
 import { uploadUrl } from '@/config/settings'
 export default {
-  name: 'HelloWorld',
+  name: 'Ueditor',
   // 2、注册组件
   components: {
     VueUeditorWrap
@@ -42,9 +42,10 @@ export default {
       }
     }
   },
+  created() {
+  },
   mounted() {
     // console.log('%c注意：本Demo提供的serverUrl是为了方便小伙伴们体验图片文件等上传功能。\n请勿在生产环境使用此serverUrl！！！', 'background:#f33;color:#fff')
-    console.log('数据已挂载')
   },
   methods: {
     // 5、 你可以在ready方法中拿到editorInstance实例,所有API和官方的实例是一样了。http://fex.baidu.com/ueditor/#api-common

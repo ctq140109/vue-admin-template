@@ -64,8 +64,9 @@ export default {
       }
     }
   },
+  created() {
+  },
   mounted() {
-    console.log('数据已挂载')
   },
   methods: {
     onSubmit() {
